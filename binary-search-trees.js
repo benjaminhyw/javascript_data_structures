@@ -31,7 +31,6 @@ BST.prototype.insert = function(value){
   }
 };
 
-
 BST.prototype.contains = function(value){
   if (value === this.value){
     // If the value is the same as the value of the BST we ran it on, return true
@@ -52,4 +51,21 @@ BST.prototype.contains = function(value){
         return this.right.contains(value);
       }
   }
+};
+
+// This function takes another function as a parameter
+// This method follows every branch down to the bottom, and running our iterator function on every node all the way down to the bottom before we move on to our next branch
+BST.prototype.depthFirstTraversal = function(iteratorFunc){
+  // If there's a left node, recursively run this function on the left node
+  if (this.left){
+    this.left.depthFirstTraversal(iteratorFunc);
+  }
+  // Then run this on the parent node
+  iteratorFunc(this.value);
+
+  // Then run this on the right child nodes
+  if (this.right){
+    this.right.depthFirstTraversal(iteratorFunc);
+  }
+  // You end up doing this for all branches of the tree
 };
