@@ -30,3 +30,14 @@ LinkedList.prototype.addToHead = function(value){
   this.head = newNode;
 };
 
+// addToTail is very similar to addToHead function
+LinkedList.prototype.addToTail = function(value){
+  // Crete a newNode, and this time make next = null (because there shouldn't be a next node if adding to tail), and the prev = the current this.tail;
+  var newNode = new Node(value, null, this.tail);
+  if (this.tail){
+    this.tail.next = newNode;
+  } else {
+    this.head = newNode;
+  }
+  this.tail = newNode;
+};
