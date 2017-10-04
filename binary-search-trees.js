@@ -30,3 +30,26 @@ BST.prototype.insert = function(value){
     }
   }
 };
+
+
+BST.prototype.contains = function(value){
+  if (value === this.value){
+    // If the value is the same as the value of the BST we ran it on, return true
+    return true
+  } else if (value < this.value){
+    // Otherwise, if value is less than the BST.value
+      if (!this.left){
+        // If there isn't a left node (meaning, there won't be a smaller value and therefore, this value won't be in the tree), return false
+        return false;
+      } else {
+        // Otherwise if there is a left value, recursively call the contain function again.. and it'll keep doing this type of loop until it either finds it or reaches a false conclusion
+        return this.left.contains(value);
+      }
+  } else if (value > this.value){
+      if (!this.right){
+        return false;
+      } else {
+        return this.right.contains(value);
+      }
+  }
+};
