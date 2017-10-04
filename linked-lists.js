@@ -85,21 +85,38 @@ LinkedList.prototype.search = function(searchValue){
   return null;
 };
 
+//This .indexOf() function works, but can be refactored
+
+// LinkedList.prototype.indexOf = function(value){
+//   var linkedListArr = [];
+//   var indexArr = [];
+//   var currentNode = this.head;
+
+//   while (currentNode){
+//     linkedListArr.push(currentNode.value)
+//     currentNode = currentNode.next
+//   }
+
+//   for (var i = 0; i < linkedListArr.length; i++){
+//     if (linkedListArr[i] == value){
+//       indexArr.push(i);
+//     }
+//   }
+
+//   return indexArr;
+// };
+
 LinkedList.prototype.indexOf = function(value){
-  var linkedListArr = [];
-  var indexArr = [];
+  var indexes = [];
+  var currentIndex = 0;
   var currentNode = this.head;
 
-  while (currentNode){
-    linkedListArr.push(currentNode.value)
-    currentNode = currentNode.next
-  }
-
-  for (var i = 0; i < linkedListArr.length; i++){
-    if (linkedListArr[i] == value){
-      indexArr.push(i);
+  while(currentNode){
+    if (currentNode.value === value){
+      indexes.push(currentIndex);
     }
+    currentNode = currentNode.next;
+    currentIndex++;
   }
-
-  return indexArr;
+  return indexes;
 };
