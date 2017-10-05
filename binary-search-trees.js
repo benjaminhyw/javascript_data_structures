@@ -92,5 +92,23 @@ Otherwise if the order is 'in-order' instead of 'pre-order', it ignores the firs
 // This function will traverse through the entire tree, but do so from top to bottom in levels.
 // This function works by shifting a node from the front of the queue one at a time, run our iterator function on that node, then push its child nodes into the back of the queue
 BST.prototype.breathFirstTraversal = function(iteratorFunc){
-  var queue = [];
+  // this refers to the root node in our directory.  We want to start with that as the first node.
+  var queue = [this];
+
+  // While a queue exists, do this block
+  while (queue.length){
+    // Remove the first element in the queue and assign it to a variable
+    // Run the iteratorFunc on that variable (which right now just console.logs it)
+    // If it has a left child node, push it into the queue
+    // Also if it has a right child node, push it into the queue
+    var treeNode = queue.shift();
+    iteratorFunc(treeNode);
+    if (treeNode.left){
+      queue.push(treeNode.left);
+    }
+    if (treeNode.right){
+      queue.push(treeNode.right);
+    }
+  }
 }
+
