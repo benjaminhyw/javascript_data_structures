@@ -112,3 +112,10 @@ BST.prototype.breathFirstTraversal = function(iteratorFunc){
   }
 }
 
+BST.prototype.getMinVal = function(){
+
+};
+
+BST.prototype.getMaxVal = function(){
+
+};
