@@ -88,3 +88,9 @@ BST.prototype.depthFirstTraversal = function(iteratorFunc, order){
 
 Otherwise if the order is 'in-order' instead of 'pre-order', it ignores the first statement, making it start on the left, then up, then parent, then right*/
 
+
+// This function will traverse through the entire tree, but do so from top to bottom in levels.
+// This function works by shifting a node from the front of the queue one at a time, run our iterator function on that node, then push its child nodes into the back of the queue
+BST.prototype.breathFirstTraversal = function(iteratorFunc){
+  var queue = [];
+}
