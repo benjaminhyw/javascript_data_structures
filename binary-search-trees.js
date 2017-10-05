@@ -76,6 +76,11 @@ BST.prototype.depthFirstTraversal = function(iteratorFunc, order){
     this.right.depthFirstTraversal(iteratorFunc, order);
   }
   // You end up doing this for all branches of the tree
+
+  // If this is the case, all the other order 'if' statements are ignored, so we end up doing left branch, then right branch, then parent
+  if (order === 'post-order'){
+    iteratorFunc(this.value);
+  }
 };
 
 /*The way the previous function works relies on the placement of the if statements, and whatever is passed as the order parameter.  If you notice, the 'pre-order' option is first, which says run it on this.value, aka the parent node.  Then it goes to the rest of the block, making it move left and then right.
