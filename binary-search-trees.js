@@ -112,10 +112,20 @@ BST.prototype.breathFirstTraversal = function(iteratorFunc){
   }
 }
 
-BST.prototype.getMinVal = function(){
-
+BST.prototype.getMinVal = function(value){
+  // If there's a left node, recursively call this on the left node and return the most outer left, which should be the smallest value
+  if (this.left){
+    return this.left.getMinVal();
+  } else {
+    return this.value;
+  }
 };
 
 BST.prototype.getMaxVal = function(){
-
+  // If there's a right node, recursively call this on the right node and return the most outer right, which should be the biggest value
+  if (this.right){
+    return this.right.getMaxVal();
+  } else {
+    return this.value;
+  }
 };
