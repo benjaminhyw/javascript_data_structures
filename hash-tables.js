@@ -52,3 +52,31 @@ HashTable.prototype.insert = function(key, value){
     currentNode.next = new HashNode(key, value)
   }
 }
+
+// The GET method will retrieve information about a certain friend.
+// It will do this by taking a key (our friends name), and it will return to us that person's email address if that person exists in our hash table
+// If they don't exist in the hash table, it will just return null
+
+HashTable.prototype.get = function(key){
+  // This tells us which bucket to look into
+  var index = this.hash(key);
+
+  // If there isn't an entry on that bucket, then return null
+  if (!this.buckets[index]){
+    return null;
+  } else {
+    // Create a variable for the node if it exists
+    var currentNode = this.buckets[index];
+    while(currentNode){
+      // While there is currentNode, run this block
+      if (currentNode.key === key){
+        // If the currentNode.key is the same as the key that was input, then return the value of the current node
+        return currentNode.value
+      };
+      // At the end of that if statement, still inside of the while loop, update currentNode to the next value and repeat the loop
+      currentNode = currentNode.next;
+    }
+    // At the very end of everything, if nothing was found, then return null.
+    return null;
+  }
+}
