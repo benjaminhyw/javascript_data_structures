@@ -31,11 +31,21 @@ HashTable.prototype.insert = function(key, value){
   // If nothing currently exists inside the bucket, then create a new node with the key/value provided
   if (!this.buckets[index]){
     this.buckets[index] = new HashNode(key, value);
+  } else if (this.buckets[index].key === key) {
+    // This else if statement basically says, if there is an entry in the buckets, and it is equal to this first one, then update the first one
+    this.buckets[index].value = value;
   } else {
     // Otherwise
     var currentNode = this.buckets[index];
     // Travel to the end of the chain through the while loop, and keep replacing currentNode with the next value until you no longer have a next value
     while (currentNode.next){
+      // This if statement is if we just want to update an already existing entry.  So it says,
+      if (currentNode.next.key === key){
+        // If the key already exists there, then just update the value
+        currentNode.next.value = value;
+        // This return statement exists to exit the while loop.  Without doing so, then there would be an extra node added at the end, which we don't want
+        return;
+      }
       currentNode = currenNode.next;
     }
     // When you no longer have a next value, create a new one, and the code block ends!
