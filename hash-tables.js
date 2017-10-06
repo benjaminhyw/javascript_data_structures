@@ -23,3 +23,22 @@ HashTable.prototype.hash = function(key){
   var bucket = total % this.numBuckets;
   return bucket;
 }
+
+HashTable.prototype.insert = function(key, value){
+  // This is going to be a 'bucket' inside of the hash table
+  var index = this.hash(key);
+
+  // If nothing currently exists inside the bucket, then create a new node with the key/value provided
+  if (!this.buckets[index]){
+    this.buckets[index] = new HashNode(key, value);
+  } else {
+    // Otherwise
+    var currentNode = this.buckets[index];
+    // Travel to the end of the chain through the while loop, and keep replacing currentNode with the next value until you no longer have a next value
+    while (currentNode.next){
+      currentNode = currenNode.next;
+    }
+    // When you no longer have a next value, create a new one, and the code block ends!
+    currentNode.next = new HashNode(key, value)
+  }
+}
