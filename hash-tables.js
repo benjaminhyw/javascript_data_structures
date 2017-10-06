@@ -80,3 +80,11 @@ HashTable.prototype.get = function(key){
     return null;
   }
 }
+
+// This method will return an array of all the hash nodes in our hash table
+// Make sure that the array returned contains all of the nodes in each of the buckets, even if there's a chain of nodes present in a bucket
+// HINT: Look at the Linked List methods built earlier
+
+HashTable.prototype.retrieveAll = function(){
+
+}
