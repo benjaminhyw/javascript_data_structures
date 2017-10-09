@@ -46,7 +46,7 @@ HashTable.prototype.insert = function(key, value){
         // This return statement exists to exit the while loop.  Without doing so, then there would be an extra node added at the end, which we don't want
         return;
       }
-      currentNode = currenNode.next;
+      currentNode = currentNode.next;
     }
     // When you no longer have a next value, create a new one, and the code block ends!
     currentNode.next = new HashNode(key, value)
@@ -86,5 +86,15 @@ HashTable.prototype.get = function(key){
 // HINT: Look at the Linked List methods built earlier
 
 HashTable.prototype.retrieveAll = function(){
-
+  var allNodes = [];
+  // This for loop goes through every bucket
+  for (var i = 0; i < this.numBuckets; i++){
+    var currentNode = this.buckets[i]
+    while (currentNode){
+      // This loops through every chain inside a bucket, if a chain exists
+      allNodes.push(currentNode);
+      currentNode = currentNode.next;
+    }
+  }
+  return allNodes;
 }
